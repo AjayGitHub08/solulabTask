@@ -12,7 +12,6 @@ import SDWebImage
 class PhotoGridViewController: UIViewController {
 
     @IBOutlet weak var collectionView:UICollectionView!
-    
     var photoArray:[String] = []
     
     override func viewDidLoad() {
@@ -22,13 +21,11 @@ class PhotoGridViewController: UIViewController {
     }
     
     func setupUI(){
-        
+       
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "PhotoGridCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PhotoGridCollectionViewCell")
     }
-
-
 }
 
 extension PhotoGridViewController:UICollectionViewDelegate{
@@ -36,15 +33,12 @@ extension PhotoGridViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoViewViewController") as? PhotoViewViewController{
-            
             vc.imageUrl = photoArray[indexPath.row]
             vc.arrayOfImages = photoArray
-            
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true, completion: nil)
         }
     }
-    
 }
 
 extension PhotoGridViewController:UICollectionViewDataSource{
@@ -58,15 +52,11 @@ extension PhotoGridViewController:UICollectionViewDataSource{
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoGridCollectionViewCell", for: indexPath) as? PhotoGridCollectionViewCell{
             cell.photoImageRef.sd_setImage(with: URL(string: photoArray[indexPath.row]), placeholderImage: UIImage(systemName: "photo"), options: .allowInvalidSSLCertificates, completed: nil)
             
-        
-            return cell
+         return cell
         }
-        
         return UICollectionViewCell()
     }
-    
 }
-
 
 extension PhotoGridViewController:UICollectionViewDelegateFlowLayout{
     
@@ -81,7 +71,6 @@ extension PhotoGridViewController:UICollectionViewDelegateFlowLayout{
         return 1
     }
 }
-
 
 extension PhotoGridViewController{
     
@@ -113,12 +102,12 @@ extension PhotoGridViewController{
                     if let dataa = data[0] as? [String:Any]{
                    print(dataa)
                     }
-                    }
-
-                    }
-                    
                 }
+
             }
+                    
+        }
+    }
             
 }
   

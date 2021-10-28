@@ -10,7 +10,6 @@ import SDWebImage
 
 class PhotoViewViewController: UIViewController {
 
-   
     @IBOutlet weak var colletionView:UICollectionView!
     
     var imageUrl = ""
@@ -20,7 +19,6 @@ class PhotoViewViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-    
     }
     
     func setupUI(){
@@ -30,20 +28,15 @@ class PhotoViewViewController: UIViewController {
         colletionView.register(UINib(nibName: "PopUpCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PopUpCollectionViewCell")
     }
     
-
     @IBAction func cancelTapped(){
         
         self.dismiss(animated: true, completion: nil)
-        
     }
-
 }
 
 extension PhotoViewViewController:UICollectionViewDelegate{
     
-    
 }
-
 extension PhotoViewViewController:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,7 +55,6 @@ extension PhotoViewViewController:UICollectionViewDataSource{
         return UICollectionViewCell()
     }
 }
-
 extension PhotoViewViewController:UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
